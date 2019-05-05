@@ -10,10 +10,10 @@ YOLO_V3_WEIGHTS_URL="https://pjreddie.com/media/files/tiny.weights"
 DARKNET_PATH=$CACHE_DIR/darknet-master
 DARKNET_CACHE_BIN=$DARKNET_PATH/darknet
 ZIP_FILENAME=$CACHE_DIR/darknet-master.zip
-YOLO_V3_CACHE_FILE=$CACHE_DIR/tinyyolo.weights
+YOLO_V3_CACHE_FILE=$CACHE_DIR/yolov3.weights
 
 DESTINATION=$BUILD_DIR/darknet  # `/app/darknet/` inside dyno
-YOLO_V3_WEIGHTS_FILE=$DESTINATION/tinyyolo.weights
+YOLO_V3_WEIGHTS_FILE=$DESTINATION/yolov3.weights
 
 
 # Download and extract Darknet
@@ -49,9 +49,9 @@ fi
 ## Download YOLO V3 Weights
 if [ ! -f "$YOLO_V3_WEIGHTS_FILE" ]; then
     if [ ! -f "$YOLO_V3_CACHE_FILE" ]; then
-        echo '-----> Downloading tinyyolo.weights'
+        echo '-----> Downloading yolov3.weights'
         wget --quiet --output-document "$YOLO_V3_CACHE_FILE" "$YOLO_V3_WEIGHTS_URL"
     fi
-    echo '-----> Copying tinyyolo.weights'
+    echo '-----> Copying yolov3.weights'
     cp "$YOLO_V3_CACHE_FILE" "$YOLO_V3_WEIGHTS_FILE"
 fi
